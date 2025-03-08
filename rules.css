@@ -1,0 +1,122 @@
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #121212;
+    color: white;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: #000;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Rules Section */
+.rules-container {
+    width: 80%;
+    margin: 100px auto;
+    background: #1b1b1b;
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 100vh;  /* Prevents collapsing */
+    padding-top: 80px;  /* Prevents navbar overlap */
+    padding-bottom: 60px; /* Prevents footer overlap */
+}
+
+/* Rules Header */
+.rules-header h1 {
+    font-size: 28px;
+    color: #FF3B30;
+    font-weight: bold;
+}
+
+.rules-header p {
+    font-size: 16px;
+    color: #ddd;
+}
+
+/* Rules Content */
+.rules-content h2 {
+    font-size: 22px;
+    color: #007BFF;
+}
+
+.rules-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.rules-content li {
+    font-size: 18px;
+    padding: 5px 0;
+}
+
+/* Table of Contents */
+.table-of-contents {
+    position: fixed;
+    right: 20px;
+    top: 100px;
+    background: #1b1b1b;
+    padding: 10px;
+    border-radius: 10px;
+    width: 220px;
+    max-width: 90%; /* Responsive Fix */
+    overflow-y: auto;
+}
+
+.table-of-contents h2 {
+    font-size: 18px;
+    color: #007BFF;
+}
+
+.table-of-contents ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.table-of-contents a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 5px 0;
+}
+
+.table-of-contents a:hover {
+    color: #4285F4;
+}
+
+/* Footer */
+.footer {
+    background: #000;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #1E1E1E;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+/* Ensures footer text is properly aligned */
+.footer-left, .footer-right {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Fix for footer text size */
+.footer-left p, .footer-right p {
+    font-size: 12px;
+    color: #bbb;
+}
