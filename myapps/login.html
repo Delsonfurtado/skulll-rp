@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkullCity Login</title>
+    <link rel="stylesheet" href="/login.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="nav-home">Home</a>
+        <h1 class="nav-title">SkullCity Login</h1>
+    </nav>
+
+    <div class="login-container">
+        <div class="login-card">
+            <h2 class="login-title">Login</h2>
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" id="username" placeholder="Enter username" class="login-input">
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" placeholder="Enter password" class="login-input">
+                    <button type="button" id="togglePassword" class="eye-icon">👁️</button>
+                </div>
+            </div>
+            <p id="error-message" class="error-message"></p>
+            <button onclick="handleLogin()" class="login-button">Submit</button>
+            <p class="signup-text">Don't have an account? <span class="signup-link">Signup</span></p>
+        </div>
+    </div>
+    
+    <script>
+        function encodePassword(password) {
+            return btoa(password); // Base64 encode password
+        }
+
+        function decodePassword(encodedPassword) {
+            try {
+                return atob(encodedPassword);
+            } catch (error) {
+                console.error("Error decoding password:", error);
+                return null;
+            }
+        }
+
+        function initializeAdminUsers() {
+            if (localStorage.getItem("adminUsers")) {
+                console.log("✅ Admin users already initialized.");
+                return; // Stop if users already exist
+            }
+
+            const adminUsers = [
+                { username: "vishnujaiswal@skullcityroleplay.in", password: encodePassword("X120VISH123U") },
+                { username: "admin2", password: encodePassword("admin2") },
+                { username: "admin3", password: encodePassword("admin3") },
+                { username: "admin4", password: encodePassword("admin4") },
+                { username: "admin5", password: encodePassword("admin5") },
+                { username: "admin6", password: encodePassword("admin6") },
+                { username: "admin7", password: encodePassword("admin7") },
+                { username: "admin8", password: encodePassword("admin8") },
+                { username: "admin9", password: encodePassword("admin9") },
+                { username: "admin10", password: encodePassword("admin10") }
+            ];
+            localStorage.setItem("adminUsers", JSON.stringify(adminUsers));
+            console.log("✅ Admin users initialized:", adminUsers);
+        }
+
+        function handleLogin() {
+            const username = document.getElementById("username").value.trim();
+            const inputPassword = document.getElementById("password").value.trim();
+            const errorMessage = document.getElementById("error-message");
+
+            if (!username || !inputPassword) {
+                errorMessage.textContent = "⚠️ Please enter both username and password.";
+                return;
+            }
+
+            initializeAdminUsers(); 
+            const storedUsers = JSON.parse(localStorage.getItem("adminUsers")) || [];
+            
+            console.log("🔍 Stored Users:", storedUsers);
+
+            const matchedUser = storedUsers.find(user => user.username.toLowerCase() === username.toLowerCase());
+
+            if (!matchedUser) {
+                console.log("❌ Username not found!");
+                errorMessage.textContent = "❌ Invalid username or password";
+                return;
+            }
+
+            console.log("✔ Username exists!");
+            console.log("🔐 Stored Encoded Password:", matchedUser.password);
+            console.log("🔓 Decoded Password:", decodePassword(matchedUser.password));
+            console.log("🔑 Entered Password:", inputPassword);
+
+            if (decodePassword(matchedUser.password) !== inputPassword) {
+                errorMessage.textContent = "❌ Invalid username or password";
+                return;
+            }
+
+            const sessionToken = btoa(username + ":" + new Date().getTime());
+            localStorage.setItem("sessionToken", sessionToken);
+
+            window.location.href = "dashboard.html?token=" + encodeURIComponent(sessionToken);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("togglePassword").addEventListener("click", function () {
+                const passwordField = document.getElementById("password");
+                passwordField.type = passwordField.type === "password" ? "text" : "password";
+            });
+
+            initializeAdminUsers();
+        });
+    </script>
+</body>
+</html>

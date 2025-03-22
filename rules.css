@@ -3,120 +3,123 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: #121212;
+    background: radial-gradient(circle at top left, #0a2a22, #000000);
     color: white;
 }
 
-/* Navbar */
+/* Navbar (Top) */
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 10px 20px;
-    background: #000;
+    padding: 8px; /* Reduced padding */
+    background: rgba(0, 0, 0, 0.8);
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1000;
+    font-size: 18px; /* Slightly smaller text */
+    font-weight: bold;
 }
 
 /* Rules Section */
 .rules-container {
     width: 80%;
-    margin: 100px auto;
-    background: #1b1b1b;
+    margin: 80px auto; /* Adjusted to fit smaller navbar */
+    background: rgba(20, 20, 20, 0.9);
     padding: 20px;
     border-radius: 10px;
-    min-height: 100vh;  /* Prevents collapsing */
-    padding-top: 80px;  /* Prevents navbar overlap */
-    padding-bottom: 60px; /* Prevents footer overlap */
+    min-height: 100vh;
+    padding-top: 60px; /* Adjusted for navbar */
+    padding-bottom: 50px;
+    box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.3);
 }
 
 /* Rules Header */
 .rules-header h1 {
     font-size: 28px;
-    color: #FF3B30;
+    color: #00ffff;
     font-weight: bold;
+    text-align: center;
 }
 
 .rules-header p {
-    font-size: 16px;
+    font-size: 14px;
     color: #ddd;
+    text-align: center;
 }
 
 /* Rules Content */
 .rules-content h2 {
-    font-size: 22px;
-    color: #007BFF;
+    font-size: 24px;
+    color: #00ffff;
+    border-bottom: 2px solid #00ffff;
+    padding-bottom: 5px;
 }
 
-.rules-content ul {
-    list-style-type: none;
-    padding: 0;
+.rules-content h3 {
+    font-size: 20px;
+    color: #ffcc00;
 }
 
-.rules-content li {
-    font-size: 18px;
-    padding: 5px 0;
+.rules-content p {
+    font-size: 16px;
+    color: #ddd;
+    line-height: 1.6;
 }
 
-/* Table of Contents */
-.table-of-contents {
-    position: fixed;
-    right: 20px;
-    top: 100px;
-    background: #1b1b1b;
-    padding: 10px;
-    border-radius: 10px;
-    width: 220px;
-    max-width: 90%; /* Responsive Fix */
-    overflow-y: auto;
-}
-
-.table-of-contents h2 {
-    font-size: 18px;
-    color: #007BFF;
-}
-
-.table-of-contents ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.table-of-contents a {
-    text-decoration: none;
-    color: white;
-    display: block;
-    padding: 5px 0;
-}
-
-.table-of-contents a:hover {
-    color: #4285F4;
-}
-
-/* Footer */
+/* Footer (Bottom) */
 .footer {
-    background: #000;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 2px solid #1E1E1E;
-    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 8px; /* Reduced padding */
+    text-align: center;
+    font-size: 12px; /* Smaller text */
+    color: #bbb;
     position: fixed;
     bottom: 0;
-    left: 0;
+    width: 100%;
+    border-top: 2px solid #1E1E1E;
 }
 
-/* Ensures footer text is properly aligned */
-.footer-left, .footer-right {
-    display: flex;
-    flex-direction: column;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px; /* Thin scrollbar */
 }
 
-/* Fix for footer text size */
-.footer-left p, .footer-right p {
-    font-size: 12px;
-    color: #bbb;
+/* Track */
+::-webkit-scrollbar-track {
+    background: #141418; /* Dark background */
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #c109c7, #07bbdb); /* Cyan to purple gradient */
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #00e6e6, #e600e6); /* Slightly brighter gradient */
+}
+
+/* Home Button */
+.home-button {
+    text-decoration: none;
+    color: #00ffff; /* Neon cyan */
+    font-size: 18px;
+    font-weight: bold;
+    padding: 6px 12px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    transition: 0.3s;
+    position: absolute;
+    left: 15px; /* Adjusts position in the navbar */
+}
+
+/* Home Button Hover Effect */
+.home-button:hover {
+    background: #d303fd;
+    color: #000;
 }
